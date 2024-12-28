@@ -114,3 +114,34 @@
 #book-list li button:hover {
     cursor: pointer;
 }
+
+
+table {
+    /* padding: 60px; */
+    font-size: 1.4rem;
+}
+td, th {
+    border: 1px dotted rgba(0, 0, 255, 0.24);
+    padding: 5px 10px;
+}
+.column-1 {
+    width: 270px;
+}
+.column-2 {
+    width: 220px;
+}
+.column-3 {
+    width: 70px;
+}
+.column-3-data {
+    text-align: right;
+}
+
+#delete-btn {
+    font-size: 1.2rem;
+    padding: 1px 10px;
+    border-radius: 7px;
+}
+#delete-btn:hover {
+    cursor: pointer;
+}

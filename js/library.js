@@ -57,6 +57,7 @@ NewBookForm.body.addEventListener('click', (e) => {
             }
             break;
         case 'submit-book-btn':
+            // get submitted form data
             const form = document.getElementById('new-book-data');
             // prevent form from submitting data
             e.preventDefault();
@@ -67,23 +68,7 @@ NewBookForm.body.addEventListener('click', (e) => {
             const read = document.getElementById("read").value;
             const book = new Book(title, author, pages, read);
             myLibrary.push(book);
-            let newBook = myLibrary[myLibrary.length - 1];
-            newBook = formatBookToString(newBook)
-            const bookList = document.getElementById('book-list');
-            const listItem = document.createElement('li');
-            const span = document.createElement('span');
-            span.textContent = newBook;
-            const deleteBtn = document.createElement('button'); // add btn to delete list item
-            deleteBtn.textContent = 'Delete'; // add button text
-            deleteBtn.setAttribute('id', 'delete_btn'); // add id to delete button
-            // append span and button to list item
-            listItem.appendChild(span);
-            listItem.appendChild(deleteBtn);
-            bookList.appendChild(listItem);
-            deleteBtn.addEventListener('click', () => {
-                listItem.remove();
-            })
-            
+            addRow(book);            
             form.reset();
             NewBookForm.closeForm();
         case 'close-form':
@@ -99,22 +84,35 @@ function formatBookToString(book) {
     return str;
 }
 
-// display books stored in the initial array
-for (const item of myLibrary) {
-    const book = formatBookToString(item);
-    const bookList = document.getElementById('book-list');
-    const listItem = document.createElement('li');
-    const span = document.createElement('span');
-    span.textContent = book;
-    const deleteBtn = document.createElement('button'); // add btn to delete list item
-    deleteBtn.textContent = 'Delete'; // add button text
-    deleteBtn.setAttribute('id', 'delete_btn'); // add id to delete button
-    // append span and button to list item
-    listItem.appendChild(span);
-    listItem.appendChild(deleteBtn);
-    bookList.appendChild(listItem);
+function addRow(book) {
+    const bookTable = document.getElementById('book-table');
+    const newRow = document.createElement('tr');
+    const column01 = document.createElement('td');
+    const column02 = document.createElement('td');
+    const column03 = document.createElement('td');
+    column03.setAttribute('class', 'column-3-data')
+    const column04 = document.createElement('td');
+    const column05 = document.createElement('td');
+    column01.textContent = book.title;
+    column02.textContent = book.author;
+    column03.textContent = book.pages;
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.setAttribute('id', 'delete-btn');
+    column05.appendChild(deleteBtn);
+    newRow.appendChild(column01);
+    newRow.appendChild(column02);
+    newRow.appendChild(column03);
+    newRow.appendChild(column04);
+    newRow.appendChild(column05);
+    bookTable.appendChild(newRow);
     deleteBtn.addEventListener('click', () => {
-        listItem.remove();
+        newRow.remove();
     })
-    // input.value = ''; // clear 
 }
+
+// add books in array to DOM table
+for (const book of myLibrary) {
+    addRow(book);
+}
+
