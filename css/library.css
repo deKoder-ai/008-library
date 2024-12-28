@@ -15,6 +15,9 @@
     padding: 3px 20px;
     border-radius: 10px;
     margin-top: 20px;
+    /* position: fixed;
+    left: 3%;
+    top: 50px */
 }
 #new-book-btn:hover {
     cursor: pointer;
@@ -27,10 +30,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
-    background-color: green;
+    background-color: rgb(46, 46, 46);
     padding: 30px 0px;
     z-index: 3;
     border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.644);
 }
 #close-form {
     position: absolute;
@@ -40,9 +44,12 @@
     height: 25px;
     margin: 15px;
     border-radius: 7px;
+    outline: 2px solid black;
 }
 #close-form:hover {
     cursor: pointer;
+    background-color: rgba(185, 1, 1, 0.788);
+    color: white;
 }
 
 #library-form {
@@ -61,34 +68,36 @@
     padding: 10px 0px;
 }
 
-#library-form input {
+#library-form input, select {
     padding: 3px 10px;
     font-size: 1.3rem;
     border-radius: 7px;
     width: 300px;
-}
-
-
-
-
-#check {
-    width: 300px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#check input {
-    width: 40px;
+    border: 2px solid black;
 }
 
 #library-form button {
     width: 300px;
-    /* margin-top: 20px; */
+    margin-top: 20px;
     border-radius: 7px;
+    border: 2px solid black;
 }
 
 #library-form button:hover {
     cursor: pointer;
+}
+
+#book-list, #book-list-container {
+    width: 100%;
+}
+
+#book-list-container h2 {
+    margin-top: 30px;
+}
+#book-list {
+    padding: 10px 0px 0px 60px;
+}
+
+#book-list li {
+    padding-top: 5px;
 }

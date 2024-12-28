@@ -1,4 +1,12 @@
 'use strict'
+
+const myLibrary = [
+    new Book('Prince of Thorns', 'Mark Lawrence', 336, true),
+    new Book('Shantaram', 'Gregory David Roberts', 944, true),
+    new Book('The Devil\'s Teeth', 'Susan Casey', 304, true)
+];
+console.log(myLibrary);
+
 function Book(title, author, pages, read, spanIdNum) {
     this.title = title;
     this.author = author;
@@ -17,14 +25,13 @@ function Book(title, author, pages, read, spanIdNum) {
     }
 };
 
-const myLibrary = [];
 
 function addBookToLibrary() {
  let x = 1;
 }
 
 
-
+// display new book form
 const NewBookForm = {
     body: document.querySelector('body'),
     newBookBtn: document.getElementById('new-book-btn'),
@@ -39,7 +46,6 @@ const NewBookForm = {
         this.toggle = false;
     }
 }
-
 NewBookForm.body.addEventListener('click', (e) => {
     let target = e.target;
     switch(target.id) {
@@ -51,6 +57,23 @@ NewBookForm.body.addEventListener('click', (e) => {
             }
             break;
         case 'submit-book-btn':
+            const form = document.getElementById('new-book-data');
+            // prevent form from submitting data
+            e.preventDefault();
+
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const pages = document.getElementById("pages").value;
+            const read = document.getElementById("read").value;
+            const book = new Book(title, author, pages, read);
+            myLibrary.push(book);
+            let newBook = myLibrary[myLibrary.length - 1];
+            newBook = formatBookToString(newBook)
+            const bookList = document.getElementById('book-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = newBook;
+            bookList.appendChild(listItem);
+            form.reset();
             NewBookForm.closeForm();
         case 'close-form':
             NewBookForm.closeForm();
@@ -58,3 +81,17 @@ NewBookForm.body.addEventListener('click', (e) => {
         //     NewBookForm.closeForm();
     } 
 });
+
+
+function formatBookToString(book) {
+    const str = `${book.title} by ${book.author}, ${book.pages} pages.`;
+    return str;
+}
+
+for (const item of myLibrary) {
+    const book = formatBookToString(item);
+    const bookList = document.getElementById('book-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = book;
+    bookList.appendChild(listItem);
+}
