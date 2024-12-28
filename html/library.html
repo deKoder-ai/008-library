@@ -54,46 +54,47 @@
         <button type="button" id="new-book-btn">Add a new book</button>
       </div>
 
-      <div id="new-book-form">
-        <form action="https://httpbin.org/post" method="post" id="new-book-data">
-
-          <button type="reset" id="close-form">X</button>
-
-          <div id="library-form">
-            <div class="input-div">
-              <label for="title">Title</label>
-              <input type="text" id="title"
-                name="title"
-                placeholder="Title...">
+      <!-- <dialog id="new-book-dialog"> -->
+        <div id="new-book-form">
+          <form action="https://httpbin.org/post" method="post" id="new-book-data">
+            <button type="reset" id="close-form">X</button>
+            <div id="library-form">
+              <div class="input-div">
+                <label for="title">Title</label>
+                <input type="text" id="title"
+                  name="title"
+                  placeholder="Title..."
+                  required>
+              </div>
+              <div class="input-div">
+                <label for="author">Author</label>
+                <input type="text" id="author"
+                  name="author"
+                  placeholder="Author..."
+                  required>
+              </div>
+              <div class="input-div">
+                <label for="pages">Pages</label>
+                <input type="number" id="pages"
+                  name="pages"
+                  placeholder="# of pages..."
+                  required/>
+              </div>
+              <div class="input-div">
+                <label for="read">Read?</label>
+                <select name="read" id="read">
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div class="input-div">
+                <button type="submit" id="submit-book-btn">Submit</button>
+              </div>
             </div>
-            <div class="input-div">
-              <label for="author">Author</label>
-              <input type="text" id="author"
-                name="author"
-                placeholder="Author...">
-            </div>
-            <div class="input-div">
-              <label for="pages">Pages</label>
-              <input type="number" id="pages"
-                name="pages"
-                placeholder="# of pages...">
-            </div>
-
-            <div class="input-div">
-              <label for="read">Read?</label>
-              <select name="read" id="read">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-              </select>
-            </div>
-
-            <div class="input-div">
-              <button type="submit" id="submit-book-btn">Submit</button>
-            </div>
-          </div>
         
-        </form>
-      </div>
+          </form>
+        </div>
+      <!-- </dialog> -->
 
       
       <div id="book-list-container">
@@ -173,13 +174,22 @@ Replace book list with table and refactor js
  - Convert book list to table
  - Create addRow function to avoid code repetition
 
-Commit 5
+Commit 5 \\
 Add a checkbox to display and alter read status
 
  - Add read checkbox to table
  - Toggle checkbox based on stored read status
  - Change read true/false string to boolean value
  - Change object read status on change of checkbox
+
+
+ Commit 6 \\
+Streamline code
+
+ - Streamlined column creation through use of for loops
+ - Added logic to avoid submitting books without all req data
+ - Attempted to use dialog but encountered weird duplication bug
+
 
  To do:
  - Read more about dialog element for form display:
