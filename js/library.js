@@ -71,8 +71,19 @@ NewBookForm.body.addEventListener('click', (e) => {
             newBook = formatBookToString(newBook)
             const bookList = document.getElementById('book-list');
             const listItem = document.createElement('li');
-            listItem.textContent = newBook;
+            const span = document.createElement('span');
+            span.textContent = newBook;
+            const deleteBtn = document.createElement('button'); // add btn to delete list item
+            deleteBtn.textContent = 'Delete'; // add button text
+            deleteBtn.setAttribute('id', 'delete_btn'); // add id to delete button
+            // append span and button to list item
+            listItem.appendChild(span);
+            listItem.appendChild(deleteBtn);
             bookList.appendChild(listItem);
+            deleteBtn.addEventListener('click', () => {
+                listItem.remove();
+            })
+            
             form.reset();
             NewBookForm.closeForm();
         case 'close-form':
@@ -88,10 +99,22 @@ function formatBookToString(book) {
     return str;
 }
 
+// display books stored in the initial array
 for (const item of myLibrary) {
     const book = formatBookToString(item);
     const bookList = document.getElementById('book-list');
     const listItem = document.createElement('li');
-    listItem.textContent = book;
+    const span = document.createElement('span');
+    span.textContent = book;
+    const deleteBtn = document.createElement('button'); // add btn to delete list item
+    deleteBtn.textContent = 'Delete'; // add button text
+    deleteBtn.setAttribute('id', 'delete_btn'); // add id to delete button
+    // append span and button to list item
+    listItem.appendChild(span);
+    listItem.appendChild(deleteBtn);
     bookList.appendChild(listItem);
+    deleteBtn.addEventListener('click', () => {
+        listItem.remove();
+    })
+    // input.value = ''; // clear 
 }
