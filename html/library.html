@@ -1,0 +1,118 @@
+<!-- TOP Projext 008-library -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/library.css">
+  <!-- research more about location in html for external scripts + async/defer? -->
+  <!-- defer loads script but prevents from running until html is parsed -->
+  <script src="../js/headerDropDown.js" defer></script>
+  <script src="../js/javascript.js" defer></script>
+  <script src="../js/library.js" defer></script>
+  <title>FR33FA11 | Library</title>
+</head>
+
+<body>
+  <header class="z-index-2">
+    <div id="logo-flex-container">
+        <a href="../index.html" id="header-logo">deKoder</a>
+    </div>
+    <div class="header-links">
+      <a href="../html/library.html" id="link-1">Library</a>
+      <a href="" id="link-2">About</a>
+      <a href="" id="link-3">Sign Up</a>
+      <a href="" id="link-4">Login</a>
+    </div>
+
+    <img src="../img/burger-2.svg" alt="Menu Icon" id="burger-menu">
+    <button id="burger-menu-btn"></button>
+    
+    <div id="header-dropdown-content">
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>
+        <a href="#">About</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+
+  </header>
+  
+
+  <!-- links -->
+  <!-- target blank opens in new tab - rel prevents new website from knowing where the referral came from -->
+  <!-- <a href="https://xyz.com" target="_blank" rel="noopener noreferrer">Write text here</a> -->
+
+
+  <div class="view image">
+    <div class="main">
+
+      <div class="flex-center">
+        <button type="button" id="new-book-btn">Add a new book</button>
+      </div>
+
+      <div id="new-book-form">
+        <form action="https://httpbin.org/post" method="post">
+
+          <button type="reset" id="close-form">X</button>
+
+          <div id="library-form">
+            <div class="input-div">
+              <label for="title">Title</label>
+              <input type="text" id="title"
+                name="title"
+                placeholder="Title...">
+            </div>
+            <div class="input-div">
+              <label for="author">Author</label>
+              <input type="text" id="author"
+                name="author"
+                placeholder="Author...">
+            </div>
+            <div class="input-div">
+              <label for="pages">Pages</label>
+              <input type="number" id="pages"
+                name="pages"
+                placeholder="# of pages...">
+            </div>
+        
+            <div class="input-div" id="check">
+                <label for="read">Read?</label>
+                <input type="checkbox" id="read"
+                  name="read"
+                  value="true">
+            </div>
+            <div class="input-div">
+              <button type="submit" id="submit-book-btn">Submit</button>
+            </div>
+          </div>
+        
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+
+  <footer class="z-index-2">
+    <p>©deKoder 2024</p>
+  </footer>
+  
+</body>
+
+</html>
+
+<!-- 
+Commit 1
+Create html, css and js to display a form to add a new book
+
+- Add button to open new book form
+- Create HTML for new book form
+- Style new book form
+- Write css and js to toggle the visibility of the form
+
+
+
+-->

@@ -1,0 +1,94 @@
+@import 'style.css';
+
+.main {
+    font-family: montserrat;
+    font-size: 1.6rem;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#new-book-btn {
+    padding: 3px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+#new-book-btn:hover {
+    cursor: pointer;
+}
+
+#new-book-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: green;
+    padding: 30px 0px;
+    z-index: 3;
+    border-radius: 10px;
+}
+#close-form {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 25px;
+    margin: 15px;
+    border-radius: 7px;
+}
+#close-form:hover {
+    cursor: pointer;
+}
+
+#library-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(240, 240, 240);
+    width: 100%;
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 0px;
+}
+
+#library-form input {
+    padding: 3px 10px;
+    font-size: 1.3rem;
+    border-radius: 7px;
+    width: 300px;
+}
+
+
+
+
+#check {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#check input {
+    width: 40px;
+}
+
+#library-form button {
+    width: 300px;
+    /* margin-top: 20px; */
+    border-radius: 7px;
+}
+
+#library-form button:hover {
+    cursor: pointer;
+}
