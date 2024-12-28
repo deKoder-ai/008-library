@@ -3,6 +3,18 @@
 const myLibrary = [
     new Book('Prince of Thorns', 'Mark Lawrence', 336, true),
     new Book('Shantaram', 'Gregory David Roberts', 944, true),
+    new Book('The Devil\'s Teeth', 'Susan Casey', 304, true),
+    new Book('Prince of Thorns', 'Mark Lawrence', 336, true),
+    new Book('Shantaram', 'Gregory David Roberts', 944, true),
+    new Book('The Devil\'s Teeth', 'Susan Casey', 304, true),
+    new Book('Prince of Thorns', 'Mark Lawrence', 336, true),
+    new Book('Shantaram', 'Gregory David Roberts', 944, false),
+    new Book('The Devil\'s Teeth', 'Susan Casey', 304, true),
+    new Book('Prince of Thorns', 'Mark Lawrence', 336, true),
+    new Book('Shantaram', 'Gregory David Roberts', 944, true),
+    new Book('The Devil\'s Teeth', 'Susan Casey', 304, true),
+    new Book('Prince of Thorns', 'Mark Lawrence', 336, true),
+    new Book('Shantaram', 'Gregory David Roberts', 944, true),
     new Book('The Devil\'s Teeth', 'Susan Casey', 304, true)
 ];
 console.log(myLibrary);
@@ -61,11 +73,10 @@ NewBookForm.body.addEventListener('click', (e) => {
             const form = document.getElementById('new-book-data');
             // prevent form from submitting data
             e.preventDefault();
-
             const title = document.getElementById("title").value;
             const author = document.getElementById("author").value;
             const pages = document.getElementById("pages").value;
-            const read = document.getElementById("read").value;
+            const read = document.getElementById("read").value === 'true';
             const book = new Book(title, author, pages, read);
             myLibrary.push(book);
             addRow(book);            
@@ -79,9 +90,25 @@ NewBookForm.body.addEventListener('click', (e) => {
 });
 
 
-function formatBookToString(book) {
-    const str = `${book.title} by ${book.author}, ${book.pages} pages.`;
-    return str;
+function createCheckbox(book) {
+    var checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.name = "read";
+    checkbox.value = "true";
+    checkbox.id = "id";
+    if (book.read === true) {
+        checkbox.checked = true;
+    } else {
+        checkbox.checked = false;
+    }
+    return checkbox;
+}
+
+function createDeleteBtn() {
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.setAttribute('id', 'delete-btn');
+    return deleteBtn;
 }
 
 function addRow(book) {
@@ -92,13 +119,15 @@ function addRow(book) {
     const column03 = document.createElement('td');
     column03.setAttribute('class', 'column-3-data')
     const column04 = document.createElement('td');
+    column04.setAttribute('class', 'column-4-data')
     const column05 = document.createElement('td');
+    const checkbox = createCheckbox(book);
+    checkbox.setAttribute('class', 'check');
+    const deleteBtn = createDeleteBtn();
     column01.textContent = book.title;
     column02.textContent = book.author;
     column03.textContent = book.pages;
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.setAttribute('id', 'delete-btn');
+    column04.appendChild(checkbox);
     column05.appendChild(deleteBtn);
     newRow.appendChild(column01);
     newRow.appendChild(column02);
@@ -109,6 +138,16 @@ function addRow(book) {
     deleteBtn.addEventListener('click', () => {
         newRow.remove();
     })
+    // alter read value on change of checkbox
+    checkbox.addEventListener('change', function(e) {
+        if (e.target.checked) {
+          book.read = true;
+        } else {
+          book.read= false;
+        }
+        console.log(book);
+    });
+      
 }
 
 // add books in array to DOM table
